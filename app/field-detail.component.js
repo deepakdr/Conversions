@@ -20,6 +20,7 @@ var FieldDetailComponent = (function () {
         this.onremovefield = new core_1.EventEmitter();
         this.types = [];
         this.isPrepForDelete = false;
+        this.isEditing = false;
     }
     FieldDetailComponent.prototype.ngOnInit = function () {
         this.types = types;
@@ -30,6 +31,15 @@ var FieldDetailComponent = (function () {
     FieldDetailComponent.prototype.confirmDelete = function () {
         console.log('removing field...');
         this.onremovefield.emit(this.field);
+    };
+    FieldDetailComponent.prototype.editField = function (field) {
+        console.log(field);
+        this.isEditing = true;
+        this.editingField = field;
+    };
+    FieldDetailComponent.prototype.cancelEdit = function () {
+        this.editingField = null;
+        this.isEditing = false;
     };
     __decorate([
         core_1.Input(), 

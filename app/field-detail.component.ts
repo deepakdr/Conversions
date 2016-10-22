@@ -21,6 +21,9 @@ export class FieldDetailComponent implements OnInit {
 
     types: KeyValue[] = [];
     isPrepForDelete:boolean = false;
+    isEditing:boolean = false;
+
+    editingField:FieldEntity;
 
     constructor() {
     }
@@ -36,5 +39,14 @@ export class FieldDetailComponent implements OnInit {
     confirmDelete() {
         console.log('removing field...');
         this.onremovefield.emit(this.field);
+    }
+    editField(field:FieldEntity){
+        console.log(field);
+        this.isEditing = true;
+        this.editingField = field;
+    }
+    cancelEdit(){
+        this.editingField = null;
+        this.isEditing = false;
     }
 }
