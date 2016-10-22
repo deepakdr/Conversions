@@ -43,10 +43,14 @@ export class FieldDetailComponent implements OnInit {
     editField(field:FieldEntity){
         console.log(field);
         this.isEditing = true;
-        this.editingField = field;
+        this.editingField = new FieldEntity();
+        this.editingField = Object.assign({}, field);
     }
     cancelEdit(){
-        this.editingField = null;
+        this.field = this.editingField;
+        this.isEditing = false;
+    }
+    saveField(){
         this.isEditing = false;
     }
 }

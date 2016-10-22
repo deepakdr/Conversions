@@ -35,10 +35,14 @@ var FieldDetailComponent = (function () {
     FieldDetailComponent.prototype.editField = function (field) {
         console.log(field);
         this.isEditing = true;
-        this.editingField = field;
+        this.editingField = new field_entity_1.FieldEntity();
+        this.editingField = Object.assign({}, field);
     };
     FieldDetailComponent.prototype.cancelEdit = function () {
-        this.editingField = null;
+        this.field = this.editingField;
+        this.isEditing = false;
+    };
+    FieldDetailComponent.prototype.saveField = function () {
         this.isEditing = false;
     };
     __decorate([

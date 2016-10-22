@@ -33,20 +33,20 @@
 <!--Field Start Position-->
 <div>
     <span *ngIf="!isEditing">{{field.startPosition}}</span>
-    <input *ngIf="isEditing" type="number" placeholder="Start Position" [(ngModel)]="field.startPosition" />
+    <input *ngIf="isEditing" style="width:50px" type="number" placeholder="Start Position" [(ngModel)]="field.startPosition" />
 </div>
 
 <!--Field Length-->
 <div>
     <span *ngIf="!isEditing">{{field.length}}</span>
-    <input *ngIf="isEditing" type="number" placeholder="Field Length" [(ngModel)]="field.length" />
+    <input *ngIf="isEditing" style="width:50px" type="number" placeholder="Field Length" [(ngModel)]="field.length" />
 </div>
 
 <!--Edit / Update Buttons-->
 <div>
-    <button *ngIf="!isEditing" (click)="editField(field)" type="button">Edit</button>
+    <button *ngIf="!isEditing" class='btnTransparent' (click)="editField(field)" type="button">&#x270D;</button>
     <span *ngIf="isEditing">
-        <button  type="button">Save</button>
-        <button (click)="cancelEdit()" type="button">Cancel</button>
+        <button (click)="saveField()" class='btnTransparent'  type="button">💾</button>
+        <button (click)="cancelEdit()" type="button">x</button>
     </span>
 </div>

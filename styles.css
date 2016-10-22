@@ -145,3 +145,7 @@ pre{
         .table > .tableBody:nth-child(even){
             background-color:#EEEEEE;
         }
+.btnTransparent{
+        border: none;
+    background-color: transparent;
+}
