@@ -92,12 +92,15 @@ h2{
     font-weight: normal;
 }
 nav{
-            line-height: 30px;
+              line-height: 30px;
     border: 2px solid #0D47A1;
     border-left: 0px;
     border-right: 0px;
-    background: linear-gradient(90deg, #009688,#4DB6AC);
-    margin-bottom:1px;
+    background: linear-gradient(90deg, #0D47A1,#0D47A1,#03A9F4);
+    margin-bottom: 1px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+        padding-left: 5px;
 }
 nav > a {
         padding: 3px 10px;
@@ -105,7 +108,8 @@ nav > a {
     text-decoration: none;
         background-color: #0D47A1;
         cursor: pointer;
-        transition:all 1s;
+            border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
 }
 nav > a:hover{
         background-color: #BBDEFB;
@@ -114,7 +118,7 @@ nav > a:hover{
 .banner{
     text-align: center;
     line-height: 40px;
-    background-color: #E3F2FD;
+    background-color:white;
     font-size: 25px;
     text-shadow: 1px 1px 1px gray;
 }
