@@ -1,0 +1,40 @@
+<h2>Create / Edit Fields</h2>
+
+<form (ngSubmit)="onsubmit()">
+    <section >
+        <section *ngIf="fields.length > 0" >
+
+        <div class="table">
+        <div class="tableHeader">
+            <div>
+                Input / Output
+            </div>
+            <div>
+                Field Name
+            </div>
+            <div>
+                Type
+            </div>
+            <div>
+                Start Position
+            </div>
+            <div>
+                Length
+            </div>
+        </div>
+        <!--<div class="tableBody" *ngFor="let field of fields">-->
+                <field-detail class="tableBody"  *ngFor="let field of fields" [field]="field" (onremovefield)="removeFieldEventHandler($event)"></field-detail>
+           
+        <!--</div>-->
+    </div>
+            <!--<div class="tableItem" *ngFor="let field of fields">
+                <field-detail [field]="field" (onremovefield)="removeFieldEventHandler($event)"></field-detail>
+            </div>-->
+        </section>
+
+    </section>
+    <div class="btnContainer">
+        <button class="btn" type="button" (click)="addField()">+ field</button>
+        <button class="btnSubmit" type="submit">Save Field(s)</button>
+    </div>
+</form>

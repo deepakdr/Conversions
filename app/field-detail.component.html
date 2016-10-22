@@ -1,0 +1,46 @@
+
+    <div>
+        <span *ngIf="field.isInput">Input</span>
+        <span *ngIf="!field.isInput">Output</span>
+    </div>
+    <div>
+        <span>{{field.name}}</span>
+        
+    </div>
+    <div>
+        <span>{{field.type}}</span>
+        
+    </div>
+    <div>
+        <span>{{field.defaultValue}}</span>
+        
+    </div>
+    <div>
+        
+        <span>{{field.length}}</span>
+    </div>
+<!--<div class="ruleComponent" [ngClass]="{'deletingRule': isPrepForDelete }">
+    <div>
+    <input  type="checkbox" [(ngModel)]="field.isInput" />
+    <span class="chkDisplay">Input</span>
+   
+    <input type="text" placeholder="Field Name" [(ngModel)]="field.name" />
+   
+    <select [(ngModel)]="field.type" required>
+        <option *ngFor="let type of types" value="{{type.id}}">{{type.value}}</option>
+    </select>
+    <input type="text" placeholder="Default Value" [(ngModel)]="field.defaultValue" />
+    <input type="number" placeholder="Start Position" [(ngModel)]="field.startPosition"/>
+    <input type="number" placeholder="Field Length" [(ngModel)]="field.length"/>
+       <div style="padding-right: 10px;">
+            <span style="padding-top: 10px;" >
+            <input *ngIf="!isPrepForDelete"  type="button" value="X" (click)="deleteField()" class="deleteRule"/>
+            </span>
+            <span *ngIf="isPrepForDelete" >
+                <span class="deleteRuleWarning">Delete!?</span>
+                <input (click)="confirmDelete(field)" type="button" value="Y" />
+                <input (click)="isPrepForDelete = !isPrepForDelete" type="button" value="N" />
+            </span>
+         </div>
+    </div>
+</div>-->

@@ -1,0 +1,38 @@
+  <div class="ruleComponent" [ngClass]="{'deletingRule': isPrepForDelete }">
+         <div style="width:200px;padding-top: 15px;">
+            <input type="checkbox" checked="{{rule.isWithoutInput}}" name="WOInput" id="WOInput" />
+            <span class="chkDisplay">Without I/p</span>
+            <input style="width:100px" type="number" placeholder="Row Id" required/>
+         </div>
+         <div style="width:270px;flex-grow:2">
+            <select style="width:200px"  id="inputField" [(ngModel)]="rule.inputField"  required>
+            <option *ngFor="let inputField of inputFields" value="{{inputField.id}}">{{inputField.value}}</option>
+            </select>
+            <select  style="width:200px" id="ipConditionField" [(ngModel)]="rule.conditionField" required>
+            <option *ngFor="let ipFieldCondition of inputFieldsForCondition" value="{{ipFieldCondition.id}}">{{ipFieldCondition.value}}</option>
+            </select>
+            <select  style="width:200px" required [(ngModel)]="rule.condition">
+            <option *ngFor="let condition of conditions" value="{{condition.id}}" >{{condition.value}}</option>
+            </select>
+            <input type="text"  style="width:200px" name="conditionValue" [(ngModel)]="rule.conditionValue" placeholder="Condition Value"/>
+         </div>
+          <div style="width:270px;flex-grow:2">
+            <select style="width: 250px;flex-grow: 2;" [(ngModel)]="rule.outputField"  id="opConditionField">
+            <option *ngFor="let outputField of outputFields" value="{{outputField.id}}">{{outputField.value}}</option>
+            </select>
+            <select required [(ngModel)]="rule.outputAction" (change)="updateAction($event.target.value)" >
+            <option *ngFor="let action of actions"  value="{{action.id}}" >{{action.value}}</option>
+            </select>
+            <input type="text" name="Action Value" [(ngModel)]="rule.actionValue"  placeholder="Action Value"/>
+         </div>
+         <div style="padding-right: 10px;">
+            <span style="padding-top: 10px;" >
+            <input *ngIf="!isPrepForDelete"  type="button" value="X" (click)="deleteRule()" class="deleteRule deleteRuleCenter"/>
+            </span>
+            <span *ngIf="isPrepForDelete" >
+                <span class="deleteRuleWarning">Delete!?</span>
+                <input (click)="confirmDelete(rule)" type="button" value="Y" />
+                <input (click)="isPrepForDelete = !isPrepForDelete" type="button" value="N" />
+            </span>
+         </div>
+      </div>

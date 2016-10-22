@@ -1,0 +1,24 @@
+<h2>{{actionMode}} Rules</h2>
+<div *ngIf="isInEditMode">
+    <label>Please choose the rule file to edit: </label>
+    <select>
+        <option>foo</option>
+    </select>
+</div>
+<form (ngSubmit) = "onsubmit()">
+<section *ngIf="rules.length === 0 && !isInEditMode">
+    <em>Click on the + Rule button to get started</em>
+</section>
+<section *ngIf="rules.length > 0" class='rulesContainer' >
+    
+<div class="tableItem taller" *ngFor="let ruleItem of rules">
+    <rule-detail (ondeleteRuleEvent)="deleteRuleEventHandler($event)"  [rule]="ruleItem"></rule-detail>
+</div>
+</section>
+<div class="btnContainer">
+<button type="button" class="btn"  (click)="addRule()">+ Rule</button>
+    <button class="btnSubmit" type="submit">Save Rule(s)</button>
+
+</div>
+
+</form>
