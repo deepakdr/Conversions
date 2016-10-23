@@ -16,10 +16,25 @@ var logger_service_1 = require('./services/logger.service');
 var AppComponent = (function () {
     function AppComponent(loggerService) {
         this.loggerService = loggerService;
+        this.menuItems = [
+            { routerLink: '/home', displayText: 'Home', isSelected: false },
+            { routerLink: '/fields/create', displayText: 'Add Fields', isSelected: false },
+            { routerLink: '/fields/edit', displayText: 'Edit Fields', isSelected: false },
+            { routerLink: '/rules/create', displayText: 'Create Rules', isSelected: false },
+            { routerLink: '/rules/edit', displayText: 'Edit Rules', isSelected: false },
+        ];
         loggerService.info("AppComponent Constructor");
     }
     AppComponent.prototype.ngOnInit = function () {
         this.loggerService.info("AppComponent ngOnInit");
+    };
+    AppComponent.prototype.selectedMenu = function (menu) {
+        this.menuItems.forEach(function (element) {
+            if (element.displayText === menu.displayText)
+                element.isSelected = true;
+            else
+                element.isSelected = false;
+        });
     };
     AppComponent = __decorate([
         core_1.Component({

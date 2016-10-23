@@ -1,43 +1,39 @@
-<h2>Create / Edit Fields</h2>
+<h2>{{actionMode}} Fields</h2>
 
 <form (ngSubmit)="onsubmit()">
-    <section >
-        <section *ngIf="fields.length > 0" >
+    <section>
+        <section *ngIf="fields.length > 0">
 
-        <div class="table">
-        <div class="tableHeader">
-            <div>
-                Input / Output
+            <div class="table">
+                <div class="tableHeader">
+                    <div>
+                        Input / Output
+                    </div>
+                    <div>
+                        Field Name
+                    </div>
+                    <div>
+                        Type
+                    </div>
+                    <div>
+                        Default Value
+                    </div>
+                    <div>
+                        Start Position
+                    </div>
+                    <div>
+                        Length
+                    </div>
+                    <div *ngIf="isInEditMode">
+                        Edit/Update
+                    </div>
+                      <div *ngIf="!isInEditMode">
+                        Delete
+                    </div>
+                </div>
+                <field-detail class="tableBody" *ngFor="let field of fields" [field]="field" [isInCreateMode]="!isInEditMode" (onremovefield)="removeFieldEventHandler($event)"></field-detail>
             </div>
-            <div>
-                Field Name
-            </div>
-            <div>
-                Type
-            </div>
-            <div>
-               Default Value
-            </div>
-            <div>
-                Start Position
-            </div>
-            <div>
-                Length
-            </div>
-            <div>
-                Edit/Update
-            </div>
-        </div>
-        <!--<div class="tableBody" *ngFor="let field of fields">-->
-                <field-detail class="tableBody"  *ngFor="let field of fields" [field]="field" [isInCreateMode]="!isInEditMode" (onremovefield)="removeFieldEventHandler($event)"></field-detail>
-           
-        <!--</div>-->
-    </div>
-            <!--<div class="tableItem" *ngFor="let field of fields">
-                <field-detail [field]="field" (onremovefield)="removeFieldEventHandler($event)"></field-detail>
-            </div>-->
         </section>
-
     </section>
     <div class="btnContainer">
         <button class="btn" type="button" (click)="addField()">+ field</button>

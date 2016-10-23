@@ -16,6 +16,7 @@ var FieldsComponent = (function () {
         this.route = route;
         this.fields = [];
         this.isInEditMode = false;
+        this.actionMode = "Create";
     }
     FieldsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -27,6 +28,7 @@ var FieldsComponent = (function () {
     FieldsComponent.prototype.resetComponent = function (mode) {
         this.isInEditMode = mode === 'create' ? false : true;
         if (this.isInEditMode) {
+            this.actionMode = "Edit";
             this.fields = [];
             this.stubField("Account Number");
             this.stubField("Address");
@@ -34,6 +36,7 @@ var FieldsComponent = (function () {
         }
         else {
             this.fields = [];
+            this.actionMode = "Create";
         }
     };
     FieldsComponent.prototype.stubField = function (name) {

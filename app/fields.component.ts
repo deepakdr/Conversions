@@ -13,6 +13,7 @@ export class FieldsComponent implements OnInit {
 
     fields: FieldEntity[] = [];
     isInEditMode: boolean = false;
+    actionMode:string = "Create";
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
@@ -27,6 +28,7 @@ export class FieldsComponent implements OnInit {
     resetComponent(mode: string) {
         this.isInEditMode = mode === 'create' ? false : true;
         if (this.isInEditMode) {
+            this.actionMode = "Edit";
             this.fields = [];
             this.stubField("Account Number");
             this.stubField("Address");
@@ -34,6 +36,7 @@ export class FieldsComponent implements OnInit {
         }
         else{
             this.fields = [];
+            this.actionMode = "Create";
         }
 
     }
