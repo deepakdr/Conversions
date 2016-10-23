@@ -1,6 +1,4 @@
 <main>
-    <!--<create-rules></create-rules>-->
-   
     <header class="banner">
          <img src="thomson-reuters-logo.png" style="
     height: 40px;
@@ -12,11 +10,6 @@ Conversions File Generator
     </header>
     <nav>
         <a *ngFor="let menu of menuItems" [ngClass]="{'selectedMenu': menu.isSelected }" routerLink="{{menu.routerLink}}" (click)="selectedMenu(menu)" >{{menu.displayText}}</a>
-        <!--<a routerLink="/home" >Home</a>
-        <a routerLink="/fields/create">Add Fields</a>
-        <a routerLink="/fields/edit"> Edit Fields</a>
-        <a routerLink="/rules/create">Create Rules</a>
-        <a routerLink="/rules/edit">Edit Rules</a>-->
         <a>Help</a>
     </nav>
     <router-outlet></router-outlet>

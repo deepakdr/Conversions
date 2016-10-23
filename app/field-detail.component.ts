@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FieldEntity } from './models/field-entity';
-import { KeyValue } from './models/key-value';
 
-const types: KeyValue[] = [
+const types: any[] = [
     { id: "", value: "-Type-" },
     { id: "Numeric", value: "Numeric" },
     { id: "AlphaNumeric", value: "AlphaNumeric" },
@@ -22,7 +21,7 @@ export class FieldDetailComponent implements OnInit {
     @Output()
     onremovefield = new EventEmitter<FieldEntity>();
 
-    types: KeyValue[] = [];
+    types: any[] = [];
     isPrepForDelete:boolean = false;
     isEditing:boolean = false;
     displayReadonlyData:boolean;

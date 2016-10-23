@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { KeyValue } from '../models/key-value';
 
  
 @Injectable()
 export class ConditionActionService{
-    getConditions():Promise<KeyValue[]>{
-         let conditions:KeyValue[] = [{
+    getConditions():Promise<any[]>{
+         let conditions:any[] = [{
             id:'',
             value:'-Condition-'
         },
@@ -20,8 +19,8 @@ export class ConditionActionService{
         ]
         return Promise.resolve(conditions);
     }
-    getActions():Promise<KeyValue[]>{
-        let actions:KeyValue[] = [{
+    getActions():Promise<any[]>{
+        let actions:any[] = [{
             id:'',
             value:'-Action-'
         },

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { KeyValue } from '../models/key-value';
  
 @Injectable()
 export class FieldsService {
-    getInputFields(): Promise<KeyValue[]> {
-        let inputFields: KeyValue[] = [
+    getInputFields(): Promise<any[]> {
+        let inputFields: any[] = [
             {
                 id: "",
                 value: "-Input Field-"
@@ -25,8 +24,8 @@ export class FieldsService {
         return Promise.resolve(inputFields);
 
     }
-    getInputFieldsForCondition(): Promise<KeyValue[]> {
-        let inputFields: KeyValue[] = [
+    getInputFieldsForCondition(): Promise<any[]> {
+        let inputFields: any[] = [
             {
                 id: "Same",
                 value: "Same"
@@ -47,8 +46,8 @@ export class FieldsService {
         return Promise.resolve(inputFields);
 
     }
-    getOutputFields(): Promise<KeyValue[]> {
-        let outputFields: KeyValue[] = [
+    getOutputFields(): Promise<any[]> {
+        let outputFields: any[] = [
             {
                 id: "",
                 value: "-Output Field-"
