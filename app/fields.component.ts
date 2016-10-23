@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { FieldEntity } from './models/field-entity';
- 
+
 
 @Component({
     moduleId: module.id,
@@ -11,45 +11,54 @@ import { FieldEntity } from './models/field-entity';
 })
 export class FieldsComponent implements OnInit {
 
-    fields:FieldEntity[]=[];
-    isInEditMode:boolean = false;
+    fields: FieldEntity[] = [];
+    isInEditMode: boolean = false;
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.stubField("Account Number");
-        this.stubField("Address");
-        this.stubField("First Name");
 
-          this.route.params.forEach((params: Params) => {
+
+        this.route.params.forEach((params: Params) => {
             let mode = params['mode'];
-            this.isInEditMode = mode === 'create' ? false : true;
-            console.log("MODE: " + mode);
-            console.log(this.isInEditMode);
+           this.resetComponent(mode);
         });
 
     }
-    stubField(name:string):void{
+    resetComponent(mode: string) {
+        this.isInEditMode = mode === 'create' ? false : true;
+        if (this.isInEditMode) {
+            this.fields = [];
+            this.stubField("Account Number");
+            this.stubField("Address");
+            this.stubField("First Name");
+        }
+        else{
+            this.fields = [];
+        }
+
+    }
+    stubField(name: string): void {
         let field = new FieldEntity();
-        field.name = name; 
+        field.name = name;
         field.type = "Numeric";
-        field.defaultValue="12345678";
+        field.defaultValue = "12345678";
         field.isInput = true;
-        field.startPosition=5;
-        field.length=100;
+        field.startPosition = 5;
+        field.length = 100;
         this.fields.push(field);
     }
-    addField():void{
+    addField(): void {
         var array = new Uint32Array(1);
         window.crypto.getRandomValues(array);
         this.stubField(array[0].toString());
     }
-    removeFieldEventHandler(field:FieldEntity){
+    removeFieldEventHandler(field: FieldEntity) {
         console.log(field.name);
-        this.fields = this.fields.filter((f)=>{
+        this.fields = this.fields.filter((f) => {
             return f.name != field.name;
         });
     }
-    onsubmit():void{
+    onsubmit(): void {
         console.log('Saving Fields..');
     }
 }

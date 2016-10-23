@@ -1,10 +1,10 @@
 <!--Input / Output Field-->
 <div>
-    <span *ngIf="!isEditing">
+    <span *ngIf="displayReadonlyData">
         <span *ngIf="field.isInput">Input</span>
         <span *ngIf="!field.isInput">Output</span>
     </span>
-    <span *ngIf="isEditing"> 
+    <span *ngIf="displayEditSection"> 
         <input type="checkbox" [(ngModel)]="field.isInput" />
         <span class="chkDisplay">Input</span>
     </span>
@@ -12,38 +12,38 @@
 
 <!--Field Name-->
 <div>
-    <span *ngIf="!isEditing">{{field.name}}</span>
-    <input *ngIf="isEditing" type="text" placeholder="Field Name" [(ngModel)]="field.name" />
+    <span *ngIf="displayReadonlyData">{{field.name}}</span>
+    <input *ngIf="displayEditSection" type="text" placeholder="Field Name" [(ngModel)]="field.name" />
 </div>
 
 <!--Field Type-->
 <div>
-    <span *ngIf="!isEditing">{{field.type}}</span>
-    <select *ngIf="isEditing" [(ngModel)]="field.type" required>
+    <span *ngIf="displayReadonlyData">{{field.type}}</span>
+    <select *ngIf="displayEditSection" [(ngModel)]="field.type" required>
         <option *ngFor="let type of types" value="{{type.id}}">{{type.value}}</option>
     </select>
 </div>
 
 <!--Default Value-->
 <div>
-    <span *ngIf="!isEditing">{{field.defaultValue}}</span>
-    <input *ngIf="isEditing" type="text" placeholder="Default Value" [(ngModel)]="field.defaultValue" />
+    <span *ngIf="displayReadonlyData">{{field.defaultValue}}</span>
+    <input *ngIf="displayEditSection" type="text" placeholder="Default Value" [(ngModel)]="field.defaultValue" />
 </div>
 
 <!--Field Start Position-->
 <div>
-    <span *ngIf="!isEditing">{{field.startPosition}}</span>
-    <input *ngIf="isEditing" style="width:50px" type="number" placeholder="Start Position" [(ngModel)]="field.startPosition" />
+    <span *ngIf="displayReadonlyData">{{field.startPosition}}</span>
+    <input *ngIf="displayEditSection" style="width:50px" type="number" placeholder="Start Position" [(ngModel)]="field.startPosition" />
 </div>
 
 <!--Field Length-->
 <div>
-    <span *ngIf="!isEditing">{{field.length}}</span>
-    <input *ngIf="isEditing" style="width:50px" type="number" placeholder="Field Length" [(ngModel)]="field.length" />
+    <span *ngIf="displayReadonlyData">{{field.length}}</span>
+    <input *ngIf="displayEditSection" style="width:50px" type="number" placeholder="Field Length" [(ngModel)]="field.length" />
 </div>
 
 <!--Edit / Update Buttons-->
-<div>
+<div *ngIf="!isInCreateMode">
     <button *ngIf="!isEditing" class='btnTransparent' (click)="editField(field)" type="button">&#x270D;</button>
     <span *ngIf="isEditing">
         <button (click)="saveField()" class='btnTransparent'  type="button">💾</button>

@@ -19,15 +19,22 @@ var FieldsComponent = (function () {
     }
     FieldsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.stubField("Account Number");
-        this.stubField("Address");
-        this.stubField("First Name");
         this.route.params.forEach(function (params) {
             var mode = params['mode'];
-            _this.isInEditMode = mode === 'create' ? false : true;
-            console.log("MODE: " + mode);
-            console.log(_this.isInEditMode);
+            _this.resetComponent(mode);
         });
+    };
+    FieldsComponent.prototype.resetComponent = function (mode) {
+        this.isInEditMode = mode === 'create' ? false : true;
+        if (this.isInEditMode) {
+            this.fields = [];
+            this.stubField("Account Number");
+            this.stubField("Address");
+            this.stubField("First Name");
+        }
+        else {
+            this.fields = [];
+        }
     };
     FieldsComponent.prototype.stubField = function (name) {
         var field = new field_entity_1.FieldEntity();

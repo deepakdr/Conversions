@@ -24,6 +24,9 @@ var FieldDetailComponent = (function () {
     }
     FieldDetailComponent.prototype.ngOnInit = function () {
         this.types = types;
+        console.log('isInCreateMode' + this.isInCreateMode);
+        this.displayReadonlyData = !this.isEditing && !this.isInCreateMode;
+        this.displayEditSection = this.isEditing || this.isInCreateMode;
     };
     FieldDetailComponent.prototype.deleteField = function () {
         this.isPrepForDelete = true;
@@ -37,18 +40,28 @@ var FieldDetailComponent = (function () {
         this.isEditing = true;
         this.editingField = new field_entity_1.FieldEntity();
         this.editingField = Object.assign({}, field);
+        this.displayReadonlyData = !this.isEditing && !this.isInCreateMode;
+        this.displayEditSection = this.isEditing || this.isInCreateMode;
     };
     FieldDetailComponent.prototype.cancelEdit = function () {
         this.field = this.editingField;
         this.isEditing = false;
+        this.displayReadonlyData = !this.isEditing && !this.isInCreateMode;
+        this.displayEditSection = this.isEditing || this.isInCreateMode;
     };
     FieldDetailComponent.prototype.saveField = function () {
         this.isEditing = false;
+        this.displayReadonlyData = !this.isEditing && !this.isInCreateMode;
+        this.displayEditSection = this.isEditing || this.isInCreateMode;
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', field_entity_1.FieldEntity)
     ], FieldDetailComponent.prototype, "field", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], FieldDetailComponent.prototype, "isInCreateMode", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
