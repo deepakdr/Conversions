@@ -35,7 +35,7 @@
             </div>
         </section>
     </section>
-    <div class="btnContainer">
+    <div class="btnContainer" *ngIf="!isInEditMode">
         <button class="btn" type="button" (click)="addField()">+ field</button>
         <button class="btnSubmit" type="submit">Save Field(s)</button>
     </div>
